@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Will you be my valentines 🎉</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            text-align: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .box {
+            background: white;
+            width: 360px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .yes { background: #28a745; color: white; }
+        .no { background: #dc3545; color: white; }
+
+        #surprise {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: scale(0.8);}
+            to {opacity: 1; transform: scale(1);}
+        }
+
+        /* confetti */
+        .confetti {
+            position: fixed;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            background: red;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2> Do you want a surprise? 🎁</h2>
+
+    <button class="yes" onclick="showSurprise()">Yes</button>
+    <button class="no" onclick="sayNo()">No</button>
+
+    <div id="surprise">
+        <h3>🎉 Surprise! 🎉</h3>
+        <p>Hi Meenuuu!</p>
+        <p> I Love U 💕</p>
+        <p> Happy Valentien's Day 🌹🌹❤️</p>
+
+        <img src="https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg">
+
+        <audio id="music" src="music.mp3"></audio>
+    </div>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+    function showSurprise() {
+        document.getElementById("surprise").style.display = "block";
+
+        document.getElementById("music").play();
+
+        startConfetti();
+    }
+
+    function sayNo() {
+        document.getElementById("msg").innerText =
+            "Okay 😘😘 Apaum I Love U thann!";
+    }
+
+    // confetti effect
+    function startConfetti() {
+        for (let i = 0; i < 40; i++) {
+            let c = document.createElement("div");
+            c.className = "confetti";
+            c.style.left = Math.random() * 100 + "vw";
+            c.style.backgroundColor =
+                "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            c.style.animationDuration = (2 + Math.random() * 3) + "s";
+            document.body.appendChild(c);
+        }
+    }
+</script>
+
+</body>
+</html>
